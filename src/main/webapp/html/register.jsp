@@ -57,7 +57,7 @@
     </h2>
     <br>
     <p>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora harum facere tempore iure recusandae veniam amet
+      Lorem ipsum dolor sit amet consecetur, adipisicing elit. Tempora harum facere tempore iure recusandae veniam amet
       deserunt excepturi sequi esse perspiciatis adipisci cumque, delectus, nihil nostrum maxime. Reiciendis, deleniti
       tempore.
     </p>
