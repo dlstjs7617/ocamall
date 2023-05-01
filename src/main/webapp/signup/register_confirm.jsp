@@ -17,19 +17,19 @@
 
   <!-- css -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="../css/reset.css">
-  <link rel="stylesheet" href="../css/header.css">
-  <link rel="stylesheet" href="../css/footer.css">
-  <link rel="stylesheet" href="../css/register_confirm.css">
+  <link rel="stylesheet" href="${contextPath}/css/reset.css">
+  <link rel="stylesheet" href="${contextPath}/css/header.css">
+  <link rel="stylesheet" href="${contextPath}/css/footer.css">
+  <link rel="stylesheet" href="${contextPath}/css/register_confirm.css">
 
   <!-- js -->
-  <script src="../js/jquery-3.6.4.min.js"></script>
-  <script src="../js/header.js"></script>
-  <script src="../js/animation.js"></script>
+  <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
+  <script src="${contextPath}/js/header.js"></script>
+  <script src="${contextPath}/js/animation.js"></script>
 
   <!-- 꽃가루 -->
-  <script src="../js/confetti_v2.js"></script>
-  <script src="../js/register_confirm.js"></script>
+  <script src="${contextPath}/js/confetti_v2.js"></script>
+  <script src="${contextPath}/js/register_confirm.js"></script>
 
   <!-- jQuery Modal -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
@@ -66,14 +66,14 @@
     </p>
   </div>
 
-  <jsp:include page="../index/header.jsp"></jsp:include>
+  <jsp:include page="../common/header.jsp"></jsp:include>
 
   <div class="container">
     <section class="register_confirm">
       <div class="register_confirm_inner">
         <h2>회원가입 완료</h2>
-        <p><strong>%s님!</strong> 캠프몰 사이트에 회원가입 하신 것을 환영합니다.</p>
-        <a href="index.html" class="btn_index">메인으로</a>
+        <p><strong><%=request.getParameter("name") %></strong> 캠프몰 사이트에 회원가입 하신 것을 환영합니다.</p>
+        <a href="${contextPath}/login/login.jsp" class="btn_index">메인으로</a>
       </div>
     </section>
 
@@ -82,7 +82,7 @@
 	  <button class="canvasBtn" id="startButton">Drop Confetti</button>
   </div>
 
-  <jsp:include page="../index/footer.jsp"></jsp:include>
+  <jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 
 </html>

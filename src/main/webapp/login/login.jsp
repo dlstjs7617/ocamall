@@ -18,16 +18,16 @@
 
   <!-- css -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="../css/reset.css">
-  <link rel="stylesheet" href="../css/header.css">
-  <link rel="stylesheet" href="../css/footer.css">
-  <link rel="stylesheet" href="../css/login.css">
+  <link rel="stylesheet" href="${contextPath}/css/reset.css">
+  <link rel="stylesheet" href="${contextPath}/css/header.css">
+  <link rel="stylesheet" href="${contextPath}/css/footer.css">
+  <link rel="stylesheet" href="${contextPath}/css/login.css">
 
   <!-- js -->
-  <script src="../js/jquery-3.6.4.min.js"></script>
-  <script src="../js/header.js"></script>
-  <script src="../js/animation.js"></script>
-  <script src="../js/login.js"></script>
+  <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
+  <script src="${contextPath}/js/header.js"></script>
+  <script src="${contextPath}/js/animation.js"></script>
+  <script src="${contextPath}/js/login.js"></script>
 </head>
 
 <body>
@@ -40,7 +40,7 @@
     </svg>
   </div>
 
-  <jsp:include page="../index/header.jsp"></jsp:include>
+  <jsp:include page="../common/header.jsp"></jsp:include>
 
 
   <div class="container">
@@ -67,13 +67,13 @@
             <a href="#" class="btn_member">로그인</a>
             <ul>
               <li>
-                <a href="register.html">이메일 가입</a>
+                <a href="${contextPath}/signup/register.jsp">이메일 가입</a>
               </li>
               <li>
-                <a href="find_email.html">이메일 찾기</a>
+                <a href="${contextPath}/login/find_email.jsp">이메일 찾기</a>
               </li>
               <li>
-                <a href="find_pwd.html">비밀번호 찾기</a>
+                <a href="${contextPath}/login/find_pwd.jsp">비밀번호 찾기</a>
               </li>
             </ul>
           </fieldset>
@@ -83,7 +83,7 @@
   </div>
 
 
-<jsp:include page="../index/footer.jsp"></jsp:include>
+<jsp:include page="../common/footer.jsp"></jsp:include>
 
 
 </body>

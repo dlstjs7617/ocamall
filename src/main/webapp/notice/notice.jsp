@@ -3,6 +3,10 @@
     isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<c:set var="articleList" value="${articleMap.articleList}" />
+<c:set var="totArticles" value="${articleMap.totArticles}" />
+<c:set var="section" value="${articleMap.section}" />
+<c:set var="pageNum" value="${articleMap.pageNum}" />
 <%
    request.setCharacterEncoding("utf-8");
 %>
@@ -17,15 +21,15 @@
 
   <!-- css -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="../css/reset.css">
-  <link rel="stylesheet" href="../css/header.css">
-  <link rel="stylesheet" href="../css/footer.css">
-  <link rel="stylesheet" href="../css/notice.css">
+  <link rel="stylesheet" href="${contextPath}/css/reset.css">
+  <link rel="stylesheet" href="${contextPath}/css/header.css">
+  <link rel="stylesheet" href="${contextPath}/css/footer.css">
+  <link rel="stylesheet" href="${contextPath}/css/notice.css">
 
   <!-- js -->
-  <script src="../js/jquery-3.6.4.min.js"></script>
-  <script src="../js/header.js"></script>
-  <script src="../js/animation.js"></script>
+  <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
+  <script src="${contextPath}/js/header.js"></script>
+  <script src="${contextPath}/js/animation.js"></script>
 </head>
 
 <body>
@@ -38,7 +42,7 @@
     </svg>
   </div>
 
-  <jsp:include page="../index/header.jsp"></jsp:include>
+  <jsp:include page="../common/header.jsp"></jsp:include>
 
 
   <div class="container">
@@ -46,7 +50,7 @@
       <div class="story_inner">
         <h2>NOTICE</h2>
 
-        <form action="#">
+        <form action="">
           <fieldset>
             <legend>검색 폼</legend>
             <label>
@@ -86,96 +90,34 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>10</td>
-              <td class="left">
-                <a href="#">공지사항 제목입니다.</a>
-              </td>
-              <td>김수환</td>
-              <td>2023-03-29</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>9</td>
-              <td class="left">
-                <a href="#">공지사항 제목입니다.</a>
-              </td>
-              <td>김수환</td>
-              <td>2023-03-29</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>8</td>
-              <td class="left">
-                <a href="#">공지사항 제목입니다.</a>
-              </td>
-              <td>김수환</td>
-              <td>2023-03-29</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>7</td>
-              <td class="left">
-                <a href="#">공지사항 제목입니다.</a>
-              </td>
-              <td>김수환</td>
-              <td>2023-03-29</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td class="left">
-                <a href="#">공지사항 제목입니다.</a>
-              </td>
-              <td>김수환</td>
-              <td>2023-03-29</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td class="left">
-                <a href="#">공지사항 제목입니다.</a>
-              </td>
-              <td>김수환</td>
-              <td>2023-03-29</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td class="left">
-                <a href="#">공지사항 제목입니다.</a>
-              </td>
-              <td>김수환</td>
-              <td>2023-03-29</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td class="left">
-                <a href="#">공지사항 제목입니다.</a>
-              </td>
-              <td>김수환</td>
-              <td>2023-03-29</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td class="left">
-                <a href="#">공지사항 제목입니다.</a>
-              </td>
-              <td>김수환</td>
-              <td>2023-03-29</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td class="left">
-                <a href="#">공지사항 제목입니다.</a>
-              </td>
-              <td>김수환</td>
-              <td>2023-03-29</td>
-              <td>100</td>
-            </tr>
+          <c:choose>
+          	<c:when test="${empty articleList}">
+          	<tr>
+	          	<td colspan="5">등록된 공지사항이 없습니다.</td>
+          	</tr>
+          	</c:when>
+          	<c:when test="${not empty articleList}">
+          		<c:forEach var="article" items="${articleList}" varStatus="articleNum" >
+          			<tr>
+          				<td>
+          					${article.articleNo}
+          				</td>
+          				<td class="left">
+          					${article.title}
+          				</td>
+          				<td>
+          					${article.name}
+          				</td>
+          				<td>
+          					${article.writeDate}
+          				</td>
+          				<td>
+          					${article.views}
+          				</td>
+          			</tr>
+          		</c:forEach>
+          	</c:when>
+          </c:choose>
           </tbody>
         </table>
         <div class="paging">
@@ -200,13 +142,13 @@
               </a>
             </li>
           </ul>
-          <a href="write.html" class="btn_black">글쓰기</a>
+          <a href="${contextPath}/notice/write.jsp" class="btn_black">글쓰기</a>
         </div>
       </div>
     </section>
   </div>
 
- <jsp:include page="../index/footer.jsp"></jsp:include>
+ <jsp:include page="../common/footer.jsp"></jsp:include>
 
 </body>
 

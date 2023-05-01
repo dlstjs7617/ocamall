@@ -17,14 +17,14 @@
 
   <!-- css -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="../css/reset.css">
-  <link rel="stylesheet" href="../css/header.css">
-  <link rel="stylesheet" href="../css/footer.css">
-  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="${contextPath}/css/reset.css">
+  <link rel="stylesheet" href="${contextPath}/css/header.css">
+  <link rel="stylesheet" href="${contextPath}/css/footer.css">
+  <link rel="stylesheet" href="${contextPath}/css/index.css">
 
   <!-- js -->
-  <script src="../js/jquery-3.6.4.min.js"></script>
-  <script src="../js/header.js"></script>
+  <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
+  <script src="${contextPath}/js/header.js"></script>
 
   <!-- jQuery Modal -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
@@ -73,7 +73,7 @@
   </div>
   <!-- model 영역 종료 -->
 
-  <jsp:include page="../index/header.jsp"></jsp:include>
+  <jsp:include page="../common/header.jsp"></jsp:include>
 
 
   <div class="container">
@@ -403,7 +403,7 @@
   </div>
 
 
-<jsp:include page="../index/footer.jsp"></jsp:include>
+<jsp:include page="../common/footer.jsp"></jsp:include>
 
 </body>
 
