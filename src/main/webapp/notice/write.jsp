@@ -127,6 +127,20 @@
         ]
       });
     });
+    function readImage(input) {
+        if(input.files && input.files[0]){
+           let reader = new FileReader();
+           reader.onload = function (event) {
+              $('#preview').attr('src', event.target.result);
+           }
+           reader.readAsDataURL(input.files[0]);
+        }
+     }
+     // 다른 액션을 submit
+     function toList(obj) {
+        obj.action = "${contextPath}/notices/listArticles.do";
+        obj.submit();
+     }
   </script>
 </head>
 
@@ -147,17 +161,30 @@
     <section class="write">
       <div class="write_inner">
         <h2>WRITE</h2>
-        <form action="#">
-          <fieldset>
-            <legend>글쓰기 폼</legend>
-            <input type="text" placeholder="제목을 작성해주세요" class="input_title">
-            <div id="editor"></div>
-            <div class="btn_area">
-              <a href="javascript:history.back();" class="btn btn_list">목록보기</a>
-              <a href="#" class="btn btn_write">작성하기</a>
-            </div>
-          </fieldset>
-        </form>
+        <form action="${contextPath}/notices/addArticle.do" method="post" enctype="multipart/form-data">
+      <table align="center">
+         <tr>
+            <td align="right">글제목 </td>
+            <td colspan="2"><input type="text" name="title"></td>
+         </tr>
+         <tr>
+            <td align="right">글내용 </td>
+            <td colspan="2"><textarea name="content" cols="50" rows="10" maxlength="4000"></textarea></td>
+         </tr>
+         <tr>
+            <td align="rigth">이미지 파일 첨부 </td>
+            <td><input type="file" name="imageFileName" onchange="readImage(this)"></td>
+            <td><img src="#" id="preview" width="200" height="200"></td>
+         </tr>
+         <tr>
+            <td align="right">&nbsp;</td>
+            <td colspan="2">
+               <input type="submit" value="글쓰기">
+               <input type="button" value="목록보기" onclick="toList(this.form)">
+            </td>
+         </tr>
+      </table>
+   </form>
       </div>
     </section>
   </div>

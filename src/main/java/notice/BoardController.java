@@ -72,8 +72,8 @@ public class BoardController extends HttpServlet {
 				// 오늘 사라진코드 articleList=boardService.listArticles();
 				// 오늘 사라진 코드 request.setAttribute("articleList", articleList);
 				nextPage = "/notice/notice.jsp";
-			} else if (action.equals("/articleForm.do")) {
-				nextPage = "/notice/articleForm.jsp";
+			} else if (action.equals("/write.do")) {
+				nextPage = "/notice/write.jsp";
 			} else if (action.equals("/addArticle.do")) {
 				int articleNo = 0;
 				Map<String, String> articleMap = upload(request, response); // 해시맵 구조(java.util)
@@ -98,7 +98,7 @@ public class BoardController extends HttpServlet {
 				out = response.getWriter();
 				out.print("<script>");
 				out.print("alert('새글을 추가했습니다');");
-				out.print("location.href='" + request.getContextPath() + "/notice/listArticles.do';");
+				out.print("location.href='" + request.getContextPath() + "/notices/notice.do';");
 				out.print("</script>");
 				return;
 			} else if (action.equals("/viewArticle.do")) { // 글 상세창 요청

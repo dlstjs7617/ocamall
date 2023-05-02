@@ -67,7 +67,7 @@
             <a href="#" class="btn_member">로그인</a>
             <ul>
               <li>
-                <a href="${contextPath}/signup/register.jsp">이메일 가입</a>
+                <a href="${contextPath}/register">이메일 가입</a>
               </li>
               <li>
                 <a href="${contextPath}/login/find_email.jsp">이메일 찾기</a>

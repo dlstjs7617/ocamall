@@ -14,13 +14,13 @@
       <div class="top_menu_inner clearfix">
         <ul>
           <li>
-            <a href="${pageContext.request.contextPath}/notice/qna.jsp">고객센터</a>
+            <a href="${contextPath}/notice/qna.jsp">고객센터</a>
           </li>
           <li>
-            <a href="${pageContext.request.contextPath}/baskert/baskert.jsp">장바구니</a>
+            <a href="${contextPath}/baskert/baskert.jsp">장바구니</a>
           </li>
           <li>
-            <a href="${pageContext.request.contextPath}/login/login.jsp">로그인</a>
+            <a href="${contextPath}/login/login.jsp">로그인</a>
           </li>
         </ul>
       </div>
@@ -28,20 +28,20 @@
     <div class="middle_menu">
       <div class="middle_menu_inner">
         <h1>
-          <a href="${pageContext.request.contextPath}/index/index.jsp">CAMPMALL</a>
+          <a href="${contextPath}/index/index.jsp">CAMPMALL</a>
         </h1>
         <ul>
           <li>
-            <a href="${pageContext.request.contextPath}/notice/notice.jsp"><strong>NOTICE</strong></a>
+            <a href="${contextPath}/notices"><strong>NOTICE</strong></a>
           </li>
           <li>
-            <a href="${pageContext.request.contextPath}/event/event.jsp">EVENT</a>
+            <a href="${contextPath}/event/event.jsp">EVENT</a>
           </li>
           <li>
-            <a href="${pageContext.request.contextPath}/notice/review.jsp">REVIEW</a>
+            <a href="${contextPath}/notice/review.jsp">REVIEW</a>
           </li>
           <li>
-            <a href="${pageContext.request.contextPath}/index/search.jsp">SEARCH</a>
+            <a href="${contextPath}/index/search.jsp">SEARCH</a>
           </li>
         </ul>
       </div>
@@ -50,25 +50,25 @@
       <div class="bottom_menu_inner">
         <ul class="clearfix">
           <li>
-            <a href="${pageContext.request.contextPath}/product/best.jsp">
+            <a href="${contextPath}/product/best.jsp">
               <strong>베스트</strong>
             </a>
           </li>
           <li>
-            <a href="${pageContext.request.contextPath}/product/new.jsp">신상품</a>
+            <a href="${contextPath}/product/new.jsp">신상품</a>
           </li>
           <li>
-            <a href="${pageContext.request.contextPath}/product/special.jsp">특가상품</a>
+            <a href="${contextPath}/product/special.jsp">특가상품</a>
           </li>
           <li>
-            <a href="${pageContext.request.contextPath}/product/pick.jsp">추천상품</a>
+            <a href="${contextPath}/product/pick.jsp">추천상품</a>
           </li>
         </ul>
       </div>
     </div>
     <div class="notice">
       <div class="notice_inner">
-        <a href="${pageContext.request.contextPath}/notice/notice.jsp">공지사항입니다.</a>
+        <a href="${contextPath}/notice/notice.jsp">공지사항입니다.</a>
       </div>
     </div>
   </header>
