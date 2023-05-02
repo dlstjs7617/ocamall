@@ -103,7 +103,9 @@
           					${article.articleNo}
           				</td>
           				<td class="left">
-          					${article.title}
+	          				<a href="${contextPath}/notices/noticeView.do?articleNo=${article.articleNo}">
+	          					${article.title}
+							</a>
           				</td>
           				<td>
           					${article.name}

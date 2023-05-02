@@ -101,11 +101,11 @@ public class BoardController extends HttpServlet {
 				out.print("location.href='" + request.getContextPath() + "/notices/notice.do';");
 				out.print("</script>");
 				return;
-			} else if (action.equals("/viewArticle.do")) { // 글 상세창 요청
+			} else if (action.equals("/noticeView.do")) { // 글 상세창 요청
 				String articleNo = request.getParameter("articleNo");
 				articleVO = boardService.viewArticle(Integer.parseInt(articleNo));
 				request.setAttribute("article", articleVO);
-				nextPage = "/notice/viewArticle.jsp";
+				nextPage = "/notice/noticeView.jsp";
 			} 
 			/*else if (action.equals("/modArticle.do")) {
 				Map<String, String> articleMap = upload(request, response);

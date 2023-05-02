@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-<c:set var="articleList" value="${articleMap.articleList}" />
-<c:set var="totArticles" value="${articleMap.totArticles}" />
-<c:set var="section" value="${articleMap.section}" />
-<c:set var="pageNum" value="${articleMap.pageNum}" />
 <%
 request.setCharacterEncoding("utf-8");
 %>
@@ -59,8 +56,8 @@ request.setCharacterEncoding("utf-8");
 				<input type="hidden" name="articleNo" value="${article.articleNo}">
 			</tr>
 			<tr>
-				<td width="20%" align="center" bgcolor="#ff9933">작성자아이디</td>
-				<td><input type="text" name="id" value="${article.id}" disabled></td>
+				<td width="20%" align="center" bgcolor="#ff9933">작성자이름</td>
+				<td><input type="text" name="id" value="${article.name}" disabled></td>
 			</tr>
 			<tr>
 				<td width="20%" align="center" bgcolor="#ff9933">제목</td>
@@ -86,20 +83,11 @@ request.setCharacterEncoding("utf-8");
 				<td width="150" align="center" bgcolor="#ff9933">등록일자</td>
 				<td><input type="text" value='<fmt:formatDate value="${article.writeDate}"/>' disabled></td>
 			</tr>
-			<tr id="tr_button_modify">
-				<td align="center" colspan="2">
-					<input type="button" value="수정반영하기" onclick="fn_modify_article(frmArticle)">
-					<input type="button" value="취소"  onclick="toList(frmArticle)">
-				</td>		
+			<tr>
+				<td width="150" align="center" bgcolor="#ff9933">조회수</td>
+				<td><input type="text"  value="${article.views}" name="views" disabled></td>
 			</tr>
-			<tr id="tr_button">
-				<td align="center" colspan="2">
-					<input type="button" value="수정하기" onclick="fn_enable(this.form)">
-					<input type="button" value="삭제하기"  onclick="fn_remove_article('${contextPath}/board/removeArticle.do',${(article).articleNo})">
-					<input type="button" value="리스트로 돌아가기기" onclick="backtoList(this.form)">
-					<input type="button" value="답글쓰기" onclick="fn_reply_form('${contextPath}/board/replyForm.do',${(article).articleNo})">
-				</td>
-			</tr>
+			
 		</table>
 	</form>
 	</div>
