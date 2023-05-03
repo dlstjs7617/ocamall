@@ -21,11 +21,14 @@ request.setCharacterEncoding("utf-8");
 <link rel="stylesheet" href="${contextPath}/css/reset.css">
 <link rel="stylesheet" href="${contextPath}/css/header.css">
 <link rel="stylesheet" href="${contextPath}/css/footer.css">
+<link rel="stylesheet" href="${contextPath}/css/write.css">
+<link rel="stylesheet" href="${contextPath}/css/noticeView.css">
 
 <!-- js -->
 <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
 <script src="${contextPath}/js/header.js"></script>
 <script src="${contextPath}/js/animation.js"></script>
+
 </head>
 
 <body>
@@ -46,51 +49,26 @@ request.setCharacterEncoding("utf-8");
 
 	<jsp:include page="../common/header.jsp"></jsp:include>
 <!-- -------------------------------------------------------------------------- -->
-
-	<div>
-		<form name="frmArticle" action="${contextPath}/board/updateArticle.do" method="post" enctype="multipart/form-data">
-		<table align="center">
-			<tr>
-				<td width="20%" align="center" bgcolor="#ff9933">글번호</td>
-				<td><input type="text" name="articleNo" value="${article.articleNo}" disabled></td>
-				<input type="hidden" name="articleNo" value="${article.articleNo}">
-			</tr>
-			<tr>
-				<td width="20%" align="center" bgcolor="#ff9933">작성자이름</td>
-				<td><input type="text" name="id" value="${article.name}" disabled></td>
-			</tr>
-			<tr>
-				<td width="20%" align="center" bgcolor="#ff9933">제목</td>
-				<td><input type="text" id="id_title" value="${article.title}" name="title" disabled></td>
-			</tr>
-			<tr>
-				<td width="20%" align="center" bgcolor="#ff9933">내용</td>
-				<td><textarea rows="10" cols="50" id="id_content" name="content" disabled>${article.content}</textarea></td>
-			</tr>
-			<c:if test="${not empty article.imageFileName}">
-				<tr>
-					<td width="150" align="center" bgcolor="#ff9933" rowspan="2">이미지</td>
-					<td>
-						<input type="hidden" name="originalFileName" value="${article.imageFileName}">
-						<img id="preview" src="${contextPath}/download.do?imageFileName=${article.imageFileName}&articleNo=${article.articleNo}">
-					</td>
-				</tr>
-				<tr>
-					<td><input type="file" id="id_imgFile" name="imageFileName" onchange="readImage(this)" disabled></td>
-				</tr>
-			</c:if>
-			<tr>
-				<td width="150" align="center" bgcolor="#ff9933">등록일자</td>
-				<td><input type="text" value='<fmt:formatDate value="${article.writeDate}"/>' disabled></td>
-			</tr>
-			<tr>
-				<td width="150" align="center" bgcolor="#ff9933">조회수</td>
-				<td><input type="text"  value="${article.views}" name="views" disabled></td>
-			</tr>
-			
-		</table>
-	</form>
-	</div>
+  <div class="container">
+    <div class="write_inner">
+        <h2>Notice</h2>
+    </div>
+    <div class="view_area">
+        <p class="title">${article.title}</p>
+        <div class="data_area">
+            <p>
+                <span class="joindate">작성날짜 : ${article.writeDate}</span>
+            <p>
+            </p>
+                <span class="name">작성자 : ${article.name}</span>
+                <span class="views">조회수 : ${article.views}</span>
+            </p>
+        </div>
+        <p class="content">
+            ${article.content}
+        </p>
+    </div>
+  </div>
 <!-- -------------------------------------------------------------------------- -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 

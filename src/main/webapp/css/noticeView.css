@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+.view_area{
+    width: 100%;
+    height: 500px;
+    margin: 0 auto;
+    margin-top: 30px;
+
+}
+.title,.content,.data_area,.joindate,.name,.views{
+    width: 60%;
+    margin: 0 auto;
+}
+.data_area{
+    line-height: 1.5em;
+}
+.joindate,.name,.views{
+    font-size: 13px;
+    font-weight: bold;
+}
+.title{
+    height: auto;
+    font-size: 1.2em;
+    text-align: left;
+    padding: 10px 20px;
+    border-top: 1px solid #828282;
+    border-bottom: 1px solid #bebebe;
+    text-align: center;
+}
+
+.content{
+    height: auto;
+    text-align: center;
+    margin-top: 30px;
+    border-top: 1px solid #bebebe;
+    border-bottom: 1px solid #bebebe;
+}
