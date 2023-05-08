@@ -106,47 +106,7 @@ public class BoardController extends HttpServlet {
 				articleVO = boardService.viewArticle(Integer.parseInt(articleNo));
 				request.setAttribute("article", articleVO);
 				nextPage = "/notice/noticeView.jsp";
-			} 
-			/*else if (action.equals("/modArticle.do")) {
-				Map<String, String> articleMap = upload(request, response);
-				int articleNo = Integer.parseInt(articleMap.get("articleNo"));
-				String title = articleMap.get("title");
-				String content = articleMap.get("content");
-				String imageFileName = articleMap.get("imageFileName");
-				articleVO.setName("이인선");
-				articleVO.setTitle(title);
-				articleVO.setContent(content);
-				articleVO.setImageFileName(imageFileName);
-				boardService.modArticle(articleVO);
-				// 이미지를 첨부한 경우에만 수행
-				if (imageFileName != null && imageFileName.length() != 0) {
-					String originalFileName = articleMap.get("originalFileName");
-					File srcFile = new File(IMG_REPO + "\\temp\\" + imageFileName);
-					File destDir = new File(IMG_REPO + "\\" + articleNo);
-					destDir.mkdir();
-					FileUtils.moveFileToDirectory(srcFile, destDir, true);
-					File oldFile = new File(IMG_REPO + "\\" + articleNo + "\\" + originalFileName);
-					oldFile.delete();
-				}
-				out = response.getWriter();
-				out.print("<script>");
-				out.print("alert('글을 수정했습니다');");
-				out.print("location.href='" + request.getContextPath() + "/notice/viewArticle.do?articleNo=" + articleNo
-						+ "';");
-				out.print("</script>");
-				return;
-				// 아래 오늘 비교추가한 코드
-			} else if (action.equals("/removeArticle.do")) {
-				int articleNo = Integer.parseInt(request.getParameter("articleNo"));
-				List<Integer> articleNoList = boardService.removeArticle(articleNo);
-				out = response.getWriter();
-				out.print("<script>");
-				out.print("alert('새글을 삭제했습니다.');");
-				out.print("location.href='" + request.getContextPath() + "/notice/listArticles.do';");
-				out.print("</script>");
-				return;
-			}*/
-			// 오늘 비교추가한 코드
+			}
 			RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 			dispatcher.forward(request, response);
 		} catch (Exception e) {
@@ -155,6 +115,49 @@ public class BoardController extends HttpServlet {
 		}
 		
 	}
+	/*
+	private Map<String, String> upload(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		Map<String, String> articleMap = new HashMap<String, String>();
+		String encoding = "utf-8";
+		File currentDirPath = new File(IMG_REPO); // 글 이미지 저장 폴더에 대해 파일 객체를 생성
+		DiskFileItemFactory factory = new DiskFileItemFactory();
+		factory.setRepository(currentDirPath);
+		factory.setSizeThreshold(1024 * 1024);
+		ServletFileUpload upload = new ServletFileUpload(factory);
+		try {
+			List items = upload.parseRequest(request);
+			for (int i = 0; i < items.size(); i++) {
+				FileItem fileItem = (FileItem) items.get(i);
+//            if문은 제목과 내용, else문에서는 이미지를 업로드하는 역할
+				if (fileItem.isFormField()) {
+					System.out.println(fileItem.getFieldName() + " = " + fileItem.getString(encoding));
+//               파일 업로드로 같이 전송된 제목, 내용을 매개변수로 Map(key, value)에 저장
+					articleMap.put(fileItem.getFieldName(), fileItem.getString(encoding));
+				} else {
+					System.out.println("파라미터 이름 : " + fileItem.getFieldName());
+					System.out.println("파일이름 : " + fileItem.getName());
+					System.out.println("파일(이미지) 크기 : " + fileItem.getSize() + "bytes");
+					if (fileItem.getSize() > 0) {
+						int idx = fileItem.getName().lastIndexOf("\\");
+//                  파일 위치를 못 찾았을 때
+						if (idx == -1) {
+							idx = fileItem.getName().lastIndexOf("/");
+						}
+						String fileName = fileItem.getName().substring(idx + 1);
+						articleMap.put(fileItem.getFieldName(), fileName);
+						File uploadFile = new File(currentDirPath + "\\temp\\" + fileName);
+						fileItem.write(uploadFile);
+					}
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("파일 업로드 중 에러!!");
+			e.printStackTrace();
+		}
+		return articleMap;
+	}
+	*/
 	private Map<String, String> upload(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Map<String, String> articleMap = new HashMap<String, String>();

@@ -161,16 +161,18 @@ public class NoticeDAO {
 			conn = dataFactory.getConnection();
 			String title = articleVO.getTitle();
 			String content = articleVO.getContent();
+			String imageFileName = articleVO.getImageFileName();
 			String name = articleVO.getName();
 			int views = articleVO.getViews();
-			String query = "insert into noticetbl (articleNo, title, content, "
-					+ "name, views) values(?, ?, ?, ?, ?)";
+			String query = "insert into noticetbl (articleNo, title, content, imageFileName,"
+					+ " name, views) values(?, ?, ?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, articleNo);
 			pstmt.setString(2, title);
 			pstmt.setString(3, content);
-			pstmt.setString(4, name);
-			pstmt.setInt(5, views);
+			pstmt.setString(4, imageFileName);
+			pstmt.setString(5, name);
+			pstmt.setInt(6, views);
 			pstmt.executeUpdate();
 			pstmt.close();
 			conn.close();
@@ -187,7 +189,7 @@ public class NoticeDAO {
 		try {
 			conn = dataFactory.getConnection();
 			String query = "select articleNo, title, content, name, "
-					+ "writeDate, views from noticetbl where articleNo = ?";
+					+ "writeDate, views, imageFileName from noticetbl where articleNo = ?";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, articleNo);
 			ResultSet rs = pstmt.executeQuery();
@@ -198,12 +200,17 @@ public class NoticeDAO {
 			String name = rs.getString("name");
 			Date writeDate = rs.getDate("writeDate");
 			int views = rs.getInt("views");
+			String imageFileName = URLEncoder.encode(rs.getString("imageFileName"), "utf-8");
+			if (imageFileName.equals("null")) {
+				imageFileName = null;
+			}
 			article.setArticleNo(_articleNo);
 			article.setTitle(title);
 			article.setContent(content);
 			article.setName(name);
 			article.setWriteDate(writeDate);
 			article.setViews(views);
+			article.setImageFileName(imageFileName);
 			rs.close();
 			pstmt.close();
 			conn.close();

@@ -122,6 +122,7 @@
           </c:choose>
           </tbody>
         </table>
+        <!-- 
         <div class="paging">
           <ul class="paging_list">
             <li class="paging_left">
@@ -144,8 +145,43 @@
               </a>
             </li>
           </ul>
+        </div> 
+         -->
+        <div class="paging">
+		<c:if test="${totArticles != 0}">
+			<c:choose>
+				<c:when test="${totArticles > 100}">
+					<c:forEach var="page" begin="1" end="10" step="1">
+						<c:if test="${section > 1 && page == 1}">
+							<a  href="${contextPath}/board/listArticles.do?section=${section-1}&pageNum=${(section-1)*10+1}"> prev </a>
+						</c:if>
+						<a class="paging_list" href="${contextPath}/board/listArticles.do?section=${section}&pageNum=${page}">${(section-1)*10+page}</a>
+						<c:if test="${page == 10}">
+							<a href="${contextPath}/board/listArticles.do?section=${section+1}&pageNum=${section*10+1}"> next </a>
+						</c:if>
+					</c:forEach>
+				</c:when>
+				<c:when test="${totArticles <= 100}">
+					<c:if test="${(totArticles mod 10) == 0}">
+						<c:set var="totArticles" value="${totArticles-1}"/>
+					</c:if>
+					<c:forEach var="page" begin="1" end="${totArticles/10+1}" step="1">
+						<c:choose>
+							<c:when test="${page == pageNum}">
+								<a class="selPage"
+									href="${contextPath}/board/listArticles.do?section=${section}&pageNum=${page}">${page}</a>
+							</c:when>
+							<c:otherwise>
+								<a class="noLine"
+									href="${contextPath}/board/listArticles.do?section=${section}&pageNum=${page}">${page}</a>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+				</c:when>
+			</c:choose>
+		</c:if>
           <a href="${contextPath}/notice/write.jsp" class="btn_black">글쓰기</a>
-        </div>
+	</div>
       </div>
     </section>
   </div>

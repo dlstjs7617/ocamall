@@ -18,7 +18,7 @@ public class BoardService {
 		int totArticles = NoticeDAO.selectToArticles();
 		articleMap.put("articleList", articleList);
 		articleMap.put("totArticles", totArticles);
-//		articleMap.put("totArticles", 100);
+	//articleMap.put("totArticles", 100);
 		return articleMap;
 	}
 

@@ -26,7 +26,7 @@ public class ArticleVO {
 		this.writeDate = writeDate;
 		this.views = views;
 	}
-
+	
 	public ArticleVO(int articleNo, String title, String content, String name, Date writeDate, int Views ,String imgageFileName) {
 		super();
 		this.articleNo = articleNo;
@@ -39,12 +39,31 @@ public class ArticleVO {
 	}
 
 	public String getImageFileName() {
+		try { // 이미지 파일이름이 한글로 썻을수도있어서 깨질수있음
+			if (imageFileName != null && imageFileName.length() != 0) {
+				imageFileName = URLDecoder.decode(imageFileName, "utf-8"); // 이미지 파일이름을 utf-8로 디코딩
+			} else {
+				imageFileName = null; // 아닐시(이미지파일이 없을시) null값으로 저장
+			}
+		} catch (UnsupportedEncodingException e) {
+			System.out.println("이미지 로딩중 에러!!");
+		}
 		return imageFileName;
 	}
 
 	public void setImageFileName(String imageFileName) {
+		try {
+			if (imageFileName != null && imageFileName.length() != 0) {
+				imageFileName = URLEncoder.encode(imageFileName, "utf-8");
+			} else {
+				imageFileName = null;
+			}
+		} catch (UnsupportedEncodingException e) {
+			System.out.println("이미지 저장 중 에러!!");
+		}
 		this.imageFileName = imageFileName;
 	}
+
 
 	public int getArticleNo() {
 		return articleNo;
@@ -93,6 +112,6 @@ public class ArticleVO {
 	public void setViews(int views) {
 		this.views = views;
 	}
-
-
+	
+	
 }

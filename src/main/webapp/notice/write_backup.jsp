@@ -31,10 +31,6 @@
   <script src="${contextPath}/js/ckeditor.js"></script>
   <script>
     $(() => {
-    	CKEDITOR.replace('editor', {
-            extraPlugins: 'image2,uploadimage',
-            filebrowserImageUploadUrl: "${contextPath}/board/download.do"
-      	});
       CKEDITOR.ClassicEditor.create(document.getElementById("editor"), {
         toolbar: {
           items: [
@@ -161,49 +157,38 @@
   <jsp:include page="../common/header.jsp"></jsp:include>
   
 
- <!--  <div class="container">
+  <div class="container">
     <section class="write">
-        <div class="write_inner">
-            <h2>WRITE</h2>
-            <form action="your_server_script_url" method="post">
-                <fieldset>
-                    <legend>글쓰기 폼</legend>
-                    <input type="text" name="title" placeholder="제목을 작성해주세요" class="input_title">
-                    <textarea name="content" id="editor" rows="10" cols="80"></textarea>
-                    <div class="btn_area">
-                        <a href="javascript:history.back();" class="btn btn_list">목록보기</a>
-                        <button type="submit" class="btn btn_write"><a>작성하기</a></button>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-    </section>
-</div>
- -->
- 
- 
-   <div class="container">
-    <section class="write">
-        <div class="write_inner">
-            <h2>WRITE</h2>
-            <form action="${contextPath}/notices/addArticle.do" method="post" enctype="multipart/form-data">
-                <fieldset>
-                    <legend>글쓰기 폼</legend>
-                    <input type="text" name="title" placeholder="제목을 작성해주세요" class="input_title">
-                    <textarea name="content" id="editor" placeholder="본문을 작성해주세요" class="input_content"></textarea>
-                    <p>
-                      <input type="file" name="imageFileName" onchange="readImage(this)" >
-                      <img src="#" id="preview" width="200" height="200" class="preview_img">
-                    </p>
-                    <div class="btn_area">
-                        <a href="javascript:history.back();" class="btn btn_list">목록보기</a>
-                        <button type="submit" class="btn btn_write"><a>작성하기</a></button>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
+      <div class="write_inner">
+        <h2>WRITE</h2>
+        <form action="${contextPath}/notices/addArticle.do" method="post" enctype="multipart/form-data">
+      <table align="center">
+         <tr>
+            <td align="right">글제목 </td>
+            <td colspan="2"><input type="text" name="title"></td>
+         </tr>
+         <tr>
+            <td align="right">글내용 </td>
+            <td colspan="2"><textarea name="content" cols="50" rows="10" maxlength="4000"></textarea></td>
+         </tr>
+         <tr>
+            <td align="rigth">이미지 파일 첨부 </td>
+            <td><input type="file" name="imageFileName" onchange="readImage(this)"></td>
+            <td><img src="#" id="preview" width="200" height="200"></td>
+         </tr>
+         <tr>
+            <td align="right">&nbsp;</td>
+            <td colspan="2">
+               <input type="submit" value="글쓰기">
+               <input type="button" value="목록보기" onclick="toList(this.form)">
+            </td>
+         </tr>
+      </table>
+   </form>
+      </div>
     </section>
   </div>
+
   <jsp:include page="../common/footer.jsp"></jsp:include>
 
 </body>

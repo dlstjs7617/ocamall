@@ -28,7 +28,22 @@ request.setCharacterEncoding("utf-8");
 <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
 <script src="${contextPath}/js/header.js"></script>
 <script src="${contextPath}/js/animation.js"></script>
-
+<script type="text/javascript">
+	function readImage(input) {
+		if(input.files && input.files[0]){
+			let reader=new FileReader();
+			reader.onload=function (event){
+				$('#preview').attr('src',event.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+			
+	}
+	function backtoList(obj) {
+		obj.action="${contextPath}/notice/notice.do";
+		obj.submit();
+	}
+</script>
 </head>
 
 <body>
@@ -64,9 +79,18 @@ request.setCharacterEncoding("utf-8");
                 <span class="views">조회수 : ${article.views}</span>
             </p>
         </div>
-        <p class="content">
+           	<p class="content">
             ${article.content}
-        </p>
+        <!-- 
+            <c:if test="${not empty article.imageFileName}">
+				<input type="hidden" name="originalFileName" value="${article.imageFileName}">
+				<img id="preview" src="${contextPath}notice/download.do?imageFileName=${article.imageFileName}&articleNo=${article.articleNo}">
+				<input type="file" id="id_imgFile" name="imageFileName" onchange="readImage(this)" disabled>
+			</c:if>
+        	</p>-->
+        	<input type="hidden" name="originalFileName" value="${article.imageFileName}">
+			<img id="preview" src="${contextPath}/download.do??imageFileName=${article.imageFileName}&articleNo=${article.articleNo}">
+        	<input type="button" value="리스트로 돌아가기기" onclick="backtoList(this.form)">
     </div>
   </div>
 <!-- -------------------------------------------------------------------------- -->

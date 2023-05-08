@@ -112,7 +112,7 @@
               <p class="title">
                 <strong>휴대폰 <span class="red_star">*</span></strong>
               </p>
-              <input type="tel" name="phone" id="phone" class="input_phone" maxlength="13" value="010-" onkeydown="if(event.keyCode==8) event.preventDefault();" oninput="if(this.value.length === 4) this.value=this.value + '-'; if(this.value.length > 9) this.value=this.value.slice(0,9) + '-' + this.value.slice(9); if(this.value.charAt(4) == '-' && this.value.length < 8) this.value='010-'; if(this.value.length === 14) this.value=this.value.slice(0,13); ">
+              <input type="tel" name="phone" id="phone" class="input_phone" maxlength="13x`">
             </div>
             <div class="input_box">
               <p class="title">

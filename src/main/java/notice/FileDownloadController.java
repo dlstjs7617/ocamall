@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/download.do")
 public class FileDownloadController extends HttpServlet {
-	private static String IMG_REPO = "C:\\lis\\board\\image_upload";
+	private static String IMG_REPO = "C:\\lis\\notice\\notice_img";
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doHandle(request, response);
 	}
@@ -27,7 +27,7 @@ public class FileDownloadController extends HttpServlet {
 	     String articleNo=request.getParameter("articleNo");
 	     String imageFileName=request.getParameter("imageFileName");
 	     OutputStream outs=response.getOutputStream(); //파일을 보내줄떈 outputStream 읽어올땐 inputStream
-	     String path=IMG_REPO + "\\" + articleNo + "\\" +imageFileName;
+	     String path=IMG_REPO + "\\" + articleNo + "\\" + imageFileName;
 	     File imageFile=new File(path);
 	     response.setHeader("Cache-Control", "no-cache");
 	     //이미지 파일을 내려 받는데 필요한 response 헤더 정보를 설정

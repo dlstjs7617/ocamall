@@ -22,13 +22,16 @@ input:focus {
   padding-top: 60px;
   width: 100%;
 }
-.write_inner form .input_title {
+.write_inner form .input_title,.input_content {
   width: 100%;
   padding: 10px;
   margin-bottom: 5px;
   border: 1px solid #bbb;
 }
-
+.input_content{
+  min-height: 300px;
+  resize: none;
+}
 .btn_area {
   margin-top: 20px;
   float: right;
