@@ -14,7 +14,7 @@
       <div class="top_menu_inner clearfix">
         <ul>
           <li>
-            <a href="${contextPath}/notice/qna.jsp">고객센터</a>
+            <a href="${contextPath}/qnalist">고객센터</a>
           </li>
           <li>
             <a href="${contextPath}/baskert/baskert.jsp">장바구니</a>
@@ -38,7 +38,7 @@
             <a href="${contextPath}/event/event.jsp">EVENT</a>
           </li>
           <li>
-            <a href="${contextPath}/notice/review.jsp">REVIEW</a>
+            <a href="${contextPath}/reviews">REVIEW</a>
           </li>
           <li>
             <a href="${contextPath}/index/search.jsp">SEARCH</a>

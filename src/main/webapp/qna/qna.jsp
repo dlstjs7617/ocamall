@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="${contextPath}/css/reset.css">
   <link rel="stylesheet" href="${contextPath}/css/header.css">
   <link rel="stylesheet" href="${contextPath}/css/footer.css">
-  <link rel="stylesheet" href="${contextPath}/css/notice.css">
+  <link rel="stylesheet" href="${contextPath}/css/qna.css">
 
   <!-- js -->
   <script src="${contextPath}/js/jquery-3.6.4.min.js"></script>
@@ -42,13 +42,13 @@
     </svg>
   </div>
 
-  <jsp:include page="../common/header.jsp"></jsp:include>
+ <jsp:include page="../common/header.jsp"></jsp:include>
 
 
   <div class="container">
-    <section class="story">
-      <div class="story_inner">
-        <h2>NOTICE</h2>
+    <section class="qna">
+      <div class="qna_inner">
+        <h2>Q&A</h2>
 
         <form action="">
           <fieldset>
@@ -103,7 +103,7 @@
           					${article.articleNo}
           				</td>
           				<td class="left">
-	          				<a href="${contextPath}/notices/noticeView.do?articleNo=${article.articleNo}">
+	          				<a href="${contextPath}/qnalist/qnaView.do?articleNo=${article.articleNo}">
 	          					${article.title}
 							</a>
           				</td>
@@ -129,11 +129,11 @@
 				<c:when test="${totArticles > 100}">
 					<c:forEach var="page" begin="1" end="10" step="1">
 						<c:if test="${section > 1 && page == 1}">
-							<a  href="${contextPath}/notices/notice.do?section=${section-1}&pageNum=${(section-1)*10+1}"> prev </a>
+							<a  href="${contextPath}/qnalist/qna.do?section=${section-1}&pageNum=${(section-1)*10+1}"> prev </a>
 						</c:if>
-						<a class="paging_list" href="${contextPath}/notices/notice.do?section=${section}&pageNum=${page}">${(section-1)*10+page}</a>
+						<a class="paging_list" href="${contextPath}/qnalist/qna.do?section=${section}&pageNum=${page}">${(section-1)*10+page}</a>
 						<c:if test="${page == 10}">
-							<a href="${contextPath}/notices/notice.do?section=${section+1}&pageNum=${section*10+1}"> next </a>
+							<a href="${contextPath}/qnalist/qna.do?section=${section+1}&pageNum=${section*10+1}"> next </a>
 						</c:if>
 					</c:forEach>
 				</c:when>
@@ -145,24 +145,24 @@
 						<c:choose>
 							<c:when test="${page == pageNum}">
 								<a class="selPage"
-									href="${contextPath}/notices/notice.do?section=${section}&pageNum=${page}">${page}</a>
+									href="${contextPath}/qnalist/qna.do?section=${section}&pageNum=${page}">${page}</a>
 							</c:when>
 							<c:otherwise>
 								<a class="noLine"
-									href="${contextPath}/notices/notice.do?section=${section}&pageNum=${page}">${page}</a>
+									href="${contextPath}/qnalist/qna.do?section=${section}&pageNum=${page}">${page}</a>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
 				</c:when>
 			</c:choose>
 		</c:if>
-          <a href="${contextPath}/notice/write.jsp" class="btn_black">글쓰기</a>
+          <a href="${contextPath}/qna/write.jsp" class="btn_black">글쓰기</a>
 	</div>
       </div>
     </section>
   </div>
 
- <jsp:include page="../common/footer.jsp"></jsp:include>
+  <jsp:include page="../common/footer.jsp"></jsp:include>
 
 </body>
 
