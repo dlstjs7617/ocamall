@@ -35,7 +35,7 @@
             <a href="${contextPath}/notices"><strong>NOTICE</strong></a>
           </li>
           <li>
-            <a href="${contextPath}/event/event.jsp">EVENT</a>
+            <a href="${contextPath}/events">EVENT</a>
           </li>
           <li>
             <a href="${contextPath}/reviews">REVIEW</a>
