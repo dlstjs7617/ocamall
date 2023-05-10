@@ -1,10 +1,21 @@
 
+<%@page import="login.MemberVO"%>
+<%@page import="login.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <%
 request.setCharacterEncoding("utf-8");
+String name = request.getParameter("name");
+int phone = Integer.parseInt(request.getParameter("phone"));
+
+MemberDAO memberDAO = new MemberDAO();
+MemberVO memberVO = new MemberVO();
+memberVO.setName(name);
+memberVO.setPhone1(phone);
+
+String member_mid = memberDAO.findId(memberVO);
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -13,7 +24,7 @@ request.setCharacterEncoding("utf-8");
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>캠프몰</title>
+<title>캠프몰 아이디 확인 창</title>
 
 <!-- css -->
 <link rel="stylesheet"
@@ -48,44 +59,49 @@ request.setCharacterEncoding("utf-8");
 	<jsp:include page="../common/header.jsp"></jsp:include>
 
 
-
 	<div class="container">
 		<section class="find">
 			<div class="find_inner">
 				<h2>FIND</h2>
-				<form action="findPwdResult.jsp" method="post" type="submit">
-					<fieldset>
-						<legend>비밀번호 찾기 폼</legend>
-						<div class="input_box">
-							<p class="title">
-								<strong>이름</strong>
-							</p>
-							<input type="text" class="input_name" name="name" required>
+				<form name="idsearch" method="post">
+					<%
+					if (member_mid != null) {
+					%>
+
+					<div class="container">
+						<div class="found-success">
+							<h4>회원님의 아이디는</h4>
+							<div class="found-id"><%=member_mid%></div>
+							<h4>입니다</h4>
 						</div>
-						<div class="input_box">
-							<p class="title">
-								<strong>이메일 주소</strong>
-							</p>
-							<input type="email" class="input_email"
-								placeholder="예) camp@campmall.com" name="email" required>
-							<p class="warning_email">이메일 주소를 정확하게 입력해주세요.</p>
+						<div class="found-login">
+							<input type="button" id="btnLogin" value="로그인" onclick="location.href='${contextPath}/login/login.jsp'" />
 						</div>
-						<div class="input_box">
-							<p class="title">
-								<strong>휴대폰</strong>
-							</p>
-							<input type="text" class="input_phone"
-								placeholder="예) 01012345678" name="phone" required>
+					</div>
+					<%
+					} else {
+					%>
+					<div class="container">
+						<div class="found-fail">
+							<h4>등록된 정보가 없습니다</h4>
 						</div>
-						<input type="submit" value = "비밀번호 찾기" >
-					</fieldset>
+						<div class="found-login">
+							<input type="button" id="btnback" value="다시 찾기"
+								onClick="history.back()" /> 
+							<input type="button" id="btnjoin"
+							value="회원가입" onclick="location.href='${contextPath}/signup/register.jsp'"/>
+						</div>
+					</div>
+					<%
+					}
+					%>
 				</form>
 			</div>
 		</section>
 	</div>
 
-	<jsp:include page="../common/footer.jsp"></jsp:include>
 
+	<jsp:include page="../common/footer.jsp"></jsp:include>
 
 </body>
 

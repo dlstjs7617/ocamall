@@ -67,4 +67,8 @@
 .login_inner form ul li a {
   font-size: 13px;
   color: #666;
-}/*# sourceMappingURL=login.css.map */
+}
+.submit_login input[type="submit"] {
+  background-color: blue;
+}
+/*# sourceMappingURL=login.css.map */
